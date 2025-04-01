@@ -68,7 +68,7 @@ impl<I2C: I2c> Pmsa003i<I2C> {
 
     /// Blocking raw read
     #[cfg(not(feature = "async"))]
-    fn read_raw(&mut self) -> Result<[u8; RESPONSE_LENGTH], Error<I2C::Error>> {
+    pub fn read_raw(&mut self) -> Result<[u8; RESPONSE_LENGTH], Error<I2C::Error>> {
         let mut response = [0; RESPONSE_LENGTH];
 
         self.i2c
@@ -86,7 +86,7 @@ impl<I2C: I2c> Pmsa003i<I2C> {
 
     /// Async raw read
     #[cfg(feature = "async")]
-    async fn read_raw(&mut self) -> Result<[u8; RESPONSE_LENGTH], Error<I2C::Error>> {
+    pub async fn read_raw(&mut self) -> Result<[u8; RESPONSE_LENGTH], Error<I2C::Error>> {
         let mut response = [0; RESPONSE_LENGTH];
 
         self.i2c
